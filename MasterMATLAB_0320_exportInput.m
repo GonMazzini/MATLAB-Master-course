@@ -6,22 +6,27 @@
 %
 %%
 
-
+%% 
 basefilename = 'testfile';
 numfiles = 10;
 
 % loop over all files
-for filei = 
+for filei = 1: numfiles
     
     % create string with name of file
-    filename = 
+    filename = [basefilename num2str(filei) '.mat'];
     
     % skip this iteration of the loop if the file exists
+    if exist(filename,'file')
+        continue;
+    end
     
     % generate some random data
     randomdata = randn(100);
     
     % write to output file (MATLAB .mat format)
+    save(filename,'randomdata')
+    disp(['I just wrote file ' filename '.'])
     
 end
     
@@ -39,19 +44,25 @@ end
 %% now for importing data
 
 % use wild-card (*) to find the files to import
-files2import = 
+files2import = dir('testfile*.mat');
 
 % initialize as cell array
-alldataC = 
+alldataC = cell(1, length(files2import));
 
 % loop over file names
-for filei=1:
+for filei=1:length(files2import);
     
     % import and store data
+    load(files2import(filei).name);
+    alldataC = randomdata;
     
     
     
     % for matrix storage, initialize on first iteration
+    if filei == 1
+        alldataM = zeros(length(files2import),size(randomdata,1),size(randomdata,1));
+    end 
+    
     
     % and now populate the big matrix
     alldataM(filei,:,:) = randomdata;
