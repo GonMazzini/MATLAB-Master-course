@@ -6,12 +6,6 @@
 %
 %%
 
-years = 18;
-string = ['My name is Gonzalo and I am ' int2str(years) ' years old'];
-disp(string)
-
-
-%%
 % list data folder and file
 dataFolder = 'C:\Users\Usuario\Desktop\MATLAB\Sandbox\';
 dataFile   = 'sensordata.xlsx';
