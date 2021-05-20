@@ -1,3 +1,8 @@
-# MATLAB-Master-course
 
-Just write some stuff here to check.
+% comments
+
+% comments
+
+X = 542+Gamma 
+
+Y = 100 *  BETA 
